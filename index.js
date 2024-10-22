@@ -2,6 +2,12 @@ import express from "express"
 import { Server } from "socket.io";
 import path from "path";
 
+// const app = require('express')();
+// const server = require('http').createServer(app);
+// const io = require('socket.io')(server);
+// io.on('connection', () => { /* … */ });
+// server.listen(3000);
+
 //fixing __dirname variable for ES6
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url)
@@ -163,3 +169,144 @@ function getAllActiveRoom() {
 }
 
 
+
+// import 'package:flutter/material.dart';
+// import 'package:socket_io_client/socket_io_client.dart' as IO;
+
+// void main() {
+//   runApp(ChatApp());
+// }
+
+// class ChatApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Chat App',
+//       home: ChatScreen(),
+//     );
+//   }
+// }
+
+// class ChatScreen extends StatefulWidget {
+//   @override
+//   _ChatScreenState createState() => _ChatScreenState();
+// }
+
+// class _ChatScreenState extends State<ChatScreen> {
+//   final TextEditingController _nameController = TextEditingController();
+//   final TextEditingController _roomController = TextEditingController();
+//   final TextEditingController _messageController = TextEditingController();
+//   IO.Socket? socket;
+//   List<String> messages = [];
+//   String? userName;
+//   String? roomName;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     initSocket();
+//   }
+
+//   void initSocket() {
+//     socket = IO.io('http://your-server-url', <String, dynamic>{
+//       'transports': ['websocket'],
+//       'autoConnect': false,
+//     });
+
+//     socket!.onConnect((_) {
+//       print('Connected');
+//     });
+
+//     socket!.on('message', (data) {
+//       setState(() {
+//         messages.add(data);
+//       });
+//     });
+
+//     socket!.onDisconnect((_) => print('Disconnected'));
+//     socket!.connect();
+//   }
+
+//   void joinRoom() {
+//     if (_nameController.text.isNotEmpty && _roomController.text.isNotEmpty) {
+//       userName = _nameController.text;
+//       roomName = _roomController.text;
+//       socket!.emit('join', {'name': userName, 'room': roomName});
+//     }
+//   }
+
+//   void sendMessage() {
+//     if (_messageController.text.isNotEmpty) {
+//       socket!.emit('message', _messageController.text);
+//       _messageController.clear();
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Chat Room')),
+//       body: Column(
+//         children: [
+//           Padding(
+//             padding: const EdgeInsets.all(8.0),
+//             child: Row(
+//               children: [
+//                 Expanded(
+//                   child: TextField(
+//                     controller: _nameController,
+//                     decoration: InputDecoration(labelText: 'Your Name'),
+//                   ),
+//                 ),
+//                 Expanded(
+//                   child: TextField(
+//                     controller: _roomController,
+//                     decoration: InputDecoration(labelText: 'Chat Room'),
+//                   ),
+//                 ),
+//                 ElevatedButton(
+//                   onPressed: joinRoom,
+//                   child: Text('Join'),
+//                 ),
+//               ],
+//             ),
+//           ),
+//           Expanded(
+//             child: ListView.builder(
+//               itemCount: messages.length,
+//               itemBuilder: (context, index) {
+//                 return ListTile(title: Text(messages[index]));
+//               },
+//             ),
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.all(8.0),
+//             child: Row(
+//               children: [
+//                 Expanded(
+//                   child: TextField(
+//                     controller: _messageController,
+//                     decoration: InputDecoration(labelText: 'Your Message'),
+//                   ),
+//                 ),
+//                 ElevatedButton(
+//                   onPressed: sendMessage,
+//                   child: Text('Send'),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+
+//   @override
+//   void dispose() {
+//     socket!.dispose();
+//     _nameController.dispose();
+//     _roomController.dispose();
+//     _messageController.dispose();
+//     super.dispose();
+//   }
+// }
