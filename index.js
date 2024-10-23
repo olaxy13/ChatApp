@@ -1,6 +1,8 @@
 import express from "express"
 import { Server } from "socket.io";
 import path from "path";
+const app = express()
+
 
 // const app = require('express')();
 // const server = require('http').createServer(app);
@@ -17,7 +19,7 @@ const __dirname = path.dirname(__filename);
 const PORT = process.env.PORT || 3500
 const ADMIN = "Admin"
 
-const app = express()
+
 app.use(express.static(path.join(__dirname, "public")))
 const expressServer = app.listen(PORT, ()=> {
     console.log(`Server is running on port ${PORT}`)
@@ -39,7 +41,7 @@ const io = new Server(expressServer, {
 })
 
 
-io.on("connection", (socket)=> { 
+io.on("connection", (socket)=> {
     console.log(`User ${socket.id} connected`)
 
         //socket.broadcast goes to everyone except te user
